@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Editor("**粗体** *斜体* `行内代码` ~~删除线~~")
+                    Editor()
                 }
             }
         }
@@ -33,6 +33,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     SiYuanHelperTheme {
-        Editor("**粗体** *斜体* `行内代码` ~~删除线~~")
+        Editor()
     }
 }

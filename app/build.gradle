@@ -58,11 +58,12 @@ android {
 }
 
 dependencies {
+    // https://github.com/meetup/MarkdownTwain
     implementation 'com.meetup:twain:0.2.2'
 
     implementation "androidx.core:core-ktx:${kotlin_version}"
-    implementation "androidx.compose.runtime:runtime:1.4.2"
-    implementation "androidx.compose.material:material-icons-extended:1.4.2"
+    implementation "androidx.compose.runtime:runtime:${compose_version}"
+    implementation "androidx.compose.material:material-icons-extended:${compose_version}"
 
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.3.1'
     implementation 'androidx.activity:activity-compose:1.7.1'

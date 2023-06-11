@@ -1,3 +1,18 @@
+// Copyright (C) 2023 Zuoqiu Yingyi
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU Affero General Public License as
+// published by the Free Software Foundation, either version 3 of the
+// License, or (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU Affero General Public License for more details.
+//
+// You should have received a copy of the GNU Affero General Public License
+// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 package space.zuoqiu.siyuanhelper.ui.theme
 
 import android.app.Activity
@@ -16,29 +31,65 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = siyuanDarkPrimary,
+    onPrimary = siyuanDarkOnPrimary,
+    primaryContainer = siyuanDarkPrimaryContainer,
+    onPrimaryContainer = siyuanDarkOnPrimaryContainer,
+    inversePrimary = siyuanDarkPrimaryInverse,
+    secondary = siyuanDarkSecondary,
+    onSecondary = siyuanDarkOnSecondary,
+    secondaryContainer = siyuanDarkSecondaryContainer,
+    onSecondaryContainer = siyuanDarkOnSecondaryContainer,
+    tertiary = siyuanDarkTertiary,
+    onTertiary = siyuanDarkOnTertiary,
+    tertiaryContainer = siyuanDarkTertiaryContainer,
+    onTertiaryContainer = siyuanDarkOnTertiaryContainer,
+    error = siyuanDarkError,
+    onError = siyuanDarkOnError,
+    errorContainer = siyuanDarkErrorContainer,
+    onErrorContainer = siyuanDarkOnErrorContainer,
+    background = siyuanDarkBackground,
+    onBackground = siyuanDarkOnBackground,
+    surface = siyuanDarkSurface,
+    onSurface = siyuanDarkOnSurface,
+    inverseSurface = siyuanDarkInverseSurface,
+    inverseOnSurface = siyuanDarkInverseOnSurface,
+    surfaceVariant = siyuanDarkSurfaceVariant,
+    onSurfaceVariant = siyuanDarkOnSurfaceVariant,
+    outline = siyuanDarkOutline
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = siyuanLightPrimary,
+    onPrimary = siyuanLightOnPrimary,
+    primaryContainer = siyuanLightPrimaryContainer,
+    onPrimaryContainer = siyuanLightOnPrimaryContainer,
+    inversePrimary = siyuanLightPrimaryInverse,
+    secondary = siyuanLightSecondary,
+    onSecondary = siyuanLightOnSecondary,
+    secondaryContainer = siyuanLightSecondaryContainer,
+    onSecondaryContainer = siyuanLightOnSecondaryContainer,
+    tertiary = siyuanLightTertiary,
+    onTertiary = siyuanLightOnTertiary,
+    tertiaryContainer = siyuanLightTertiaryContainer,
+    onTertiaryContainer = siyuanLightOnTertiaryContainer,
+    error = siyuanLightError,
+    onError = siyuanLightOnError,
+    errorContainer = siyuanLightErrorContainer,
+    onErrorContainer = siyuanLightOnErrorContainer,
+    background = siyuanLightBackground,
+    onBackground = siyuanLightOnBackground,
+    surface = siyuanLightSurface,
+    onSurface = siyuanLightOnSurface,
+    inverseSurface = siyuanLightInverseSurface,
+    inverseOnSurface = siyuanLightInverseOnSurface,
+    surfaceVariant = siyuanLightSurfaceVariant,
+    onSurfaceVariant = siyuanLightOnSurfaceVariant,
+    outline = siyuanLightOutline
 )
 
 @Composable
-fun SiYuanHelperTheme(
+fun HelperTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
@@ -65,6 +116,7 @@ fun SiYuanHelperTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        shapes = shapes,
         content = content
     )
 }

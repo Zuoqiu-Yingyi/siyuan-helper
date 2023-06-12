@@ -38,7 +38,7 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -187,8 +187,8 @@ fun SubjectDetailAppBar(
 ) {
     TopAppBar(
         modifier = modifier,
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = MaterialTheme.colorScheme.inverseOnSurface
+        colors = topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.inverseOnSurface,
         ),
         title = {
             Column(
@@ -197,13 +197,13 @@ fun SubjectDetailAppBar(
                 else Alignment.Start
             ) {
                 Text(
-                    text = subject.description,
+                    text = subject.title,
                     style = MaterialTheme.typography.titleMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Text(
                     modifier = Modifier.padding(top = 4.dp),
-                    text = "${memos.size} ${stringResource(id = R.string.messages)}",
+                    text = "${memos.size} ${stringResource(id = R.string.memos)}",
                     style = MaterialTheme.typography.labelMedium,
                     color = MaterialTheme.colorScheme.outline
                 )

@@ -22,14 +22,17 @@ import kotlinx.coroutines.flow.flow
 class SubjectsRepositoryImpl : SubjectsRepository {
 
     override fun getDefaultSubject(): Flow<Subject> = flow {
-        emit(LocalSubjectDataProvider.getDefaultSubject())
+        val subject = LocalSubjectDataProvider.getDefaultSubject()
+        emit(subject)
     }
 
     override fun getAllSubjects(): Flow<List<Subject>> = flow {
-        emit(LocalSubjectDataProvider.allSubjects)
+        val subjects = LocalSubjectDataProvider.allSubjects
+        emit(subjects)
     }
 
     override fun getSubjectById(id: Long): Flow<Subject?> = flow {
-        emit(LocalSubjectDataProvider.getSubjectById(id))
+        val subject = LocalSubjectDataProvider.getSubjectById(id)
+        emit(subject)
     }
 }

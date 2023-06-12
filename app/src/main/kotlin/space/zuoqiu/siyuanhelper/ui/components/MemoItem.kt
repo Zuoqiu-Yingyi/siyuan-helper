@@ -41,10 +41,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -52,11 +52,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.meetup.twain.MarkdownEditor
 import com.meetup.twain.MarkdownText
 import space.zuoqiu.siyuanhelper.R
 import space.zuoqiu.siyuanhelper.data.Memo
+import space.zuoqiu.siyuanhelper.data.local.LocalMemosDataProvider
+import space.zuoqiu.siyuanhelper.ui.theme.HelperTheme
 import space.zuoqiu.siyuanhelper.ui.utils.dateTimeFormatter
 import java.time.ZonedDateTime
 
@@ -73,10 +76,10 @@ fun MemoItem(
     val markdown = rememberSaveable(stateSaver = TextFieldValue.Saver) {
         mutableStateOf(TextFieldValue(memo.content))
     }
-    var editing by remember { mutableStateOf(false) } // 是否处于编辑状态
-    var title = remember { mutableStateOf(memo.title) } // 标题
-    var updated = remember { mutableStateOf(memo.updated) } // 更新时间
-    var description = remember { mutableStateOf(memo.description) } // 描述
+    var editing by rememberSaveable { mutableStateOf(false) } // 是否处于编辑状态
+    val title = rememberSaveable { mutableStateOf(memo.title) } // 标题
+    val updated = rememberSaveable { mutableStateOf(memo.updated) } // 更新时间
+    val description = rememberSaveable { mutableStateOf(memo.description) } // 描述
 
     /* 切换编辑状态 */
     val toggle = {
@@ -95,7 +98,10 @@ fun MemoItem(
 
     Card(
         modifier = modifier
-            .padding(horizontal = 16.dp, vertical = 4.dp)
+            .padding(
+                horizontal = 16.dp,
+                vertical = 4.dp,
+            )
             .combinedClickable(
                 /* 双击切换编辑状态 */
                 onDoubleClick = toggle,
@@ -214,7 +220,9 @@ fun MemoItem(
                             onValueChange = { value ->
                                 description.value = value
                             },
-                            modifier = Modifier.padding(bottom = 8.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(bottom = 8.dp),
                             label = {
                                 Text(
                                     text = stringResource(id = R.string.description),
@@ -301,3 +309,12 @@ fun MemoItem(
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun MemoItemPreview() {
+    HelperTheme {
+        MemoItem(
+            memo = LocalMemosDataProvider.allMemos.first(),
+        )
+    }
+}

@@ -23,7 +23,7 @@ import java.time.ZonedDateTime
  */
 data class Subject(
     val id: Long, // 主题 ID
-    val title: String, // 主题标题
+    var title: String, // 主题标题
     var description: String, // 主题描述
     var updated: ZonedDateTime = ZonedDateTime.now(), // 更新时间
 ) {

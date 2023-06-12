@@ -19,7 +19,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,7 +27,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeFloatingActionButton
@@ -43,14 +41,14 @@ import androidx.window.layout.DisplayFeature
 import space.zuoqiu.siyuanhelper.R
 import space.zuoqiu.siyuanhelper.data.Memo
 import space.zuoqiu.siyuanhelper.ui.components.SubjectDetailAppBar
-import space.zuoqiu.siyuanhelper.ui.components.DockedSearchBar
-import space.zuoqiu.siyuanhelper.ui.components.SubjectListItem
 import space.zuoqiu.siyuanhelper.ui.components.MemoItem
 import space.zuoqiu.siyuanhelper.ui.utils.HelperContentType
 import space.zuoqiu.siyuanhelper.ui.utils.NavigationType
 import com.google.accompanist.adaptive.HorizontalTwoPaneStrategy
 import com.google.accompanist.adaptive.TwoPane
 import space.zuoqiu.siyuanhelper.data.Subject
+import space.zuoqiu.siyuanhelper.ui.components.MemoList
+import space.zuoqiu.siyuanhelper.ui.components.SubjectList
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -86,7 +84,7 @@ fun InboxScreen(
                     openedSubject = homeUIState.openedSubject,
                     selectedSubjectIds = homeUIState.selectedSubjects,
                     toggleSubjectSelection = toggleSelectedSubject,
-                    emailLazyListState = subjectLazyListState,
+                    lazyListState = subjectLazyListState,
                     navigateToDetail = navigateToDetail
                 )
             },
@@ -165,79 +163,9 @@ fun SinglePaneContent(
             openedSubject = homeUIState.openedSubject,
             selectedSubjectIds = homeUIState.selectedSubjects,
             toggleSubjectSelection = toggleSubjectSelection,
-            emailLazyListState = subjectLazyListState,
+            lazyListState = subjectLazyListState,
             modifier = modifier,
             navigateToDetail = navigateToDetail
         )
-    }
-}
-
-@Composable
-fun SubjectList(
-    memos: List<Memo>,
-    subjects: List<Subject>,
-    openedSubject: Subject?,
-    selectedSubjectIds: Set<Long>,
-    toggleSubjectSelection: (Long) -> Unit,
-    emailLazyListState: LazyListState,
-    modifier: Modifier = Modifier,
-    navigateToDetail: (Long, HelperContentType) -> Unit
-) {
-    Box(modifier = modifier) {
-        DockedSearchBar(
-            memos = memos,
-            onSearchItemSelected = { searchedMemo ->
-                navigateToDetail(searchedMemo.id, HelperContentType.SINGLE_PANE)
-            },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp)
-        )
-
-        LazyColumn(
-            modifier = modifier
-                .fillMaxWidth()
-                .padding(top = 80.dp),
-            state = emailLazyListState
-        ) {
-            items(items = subjects, key = { it.id }) { subject ->
-                SubjectListItem(
-                    subject = subject,
-                    navigateToDetail = { subjectId ->
-                        navigateToDetail(subjectId, HelperContentType.SINGLE_PANE)
-                    },
-                    toggleSelection = toggleSubjectSelection,
-                    isOpened = openedSubject?.id == subject.id,
-                    isSelected = selectedSubjectIds.contains(subject.id)
-                )
-            }
-        }
-    }
-}
-
-@Composable
-fun MemoList(
-    memos: List<Memo>,
-    subject: Subject,
-    modifier: Modifier = Modifier.fillMaxSize(),
-    isFullScreen: Boolean = true,
-    onBackPressed: () -> Unit = {}
-) {
-    LazyColumn(
-        modifier = modifier
-            .background(MaterialTheme.colorScheme.inverseOnSurface)
-    ) {
-        item {
-            SubjectDetailAppBar(
-                memos = memos,
-                subject = subject,
-                isFullScreen = isFullScreen,
-            ) {
-                onBackPressed()
-            }
-        }
-        items(items = memos, key = { it.id }) { memo ->
-            MemoItem(memo = memo)
-        }
     }
 }

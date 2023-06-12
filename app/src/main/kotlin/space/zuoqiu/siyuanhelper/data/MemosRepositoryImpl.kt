@@ -22,15 +22,17 @@ import kotlinx.coroutines.flow.flow
 class MemosRepositoryImpl : MemosRepository {
 
     override fun getAllMemos(): Flow<List<Memo>> = flow {
-        emit(LocalMemosDataProvider.allMemos)
+        val memos = LocalMemosDataProvider.allMemos
+        emit(memos)
     }
 
     override fun getCategoryMemos(category: MemoType): Flow<List<Memo>> = flow {
-        val categoryEmails = LocalMemosDataProvider.allMemos.filter { it.memoType == category }
-        emit(categoryEmails)
+        val memos = LocalMemosDataProvider.allMemos.filter { it.memoType == category }
+        emit(memos)
     }
 
     override fun getMemoFromId(id: Long): Flow<Memo?> = flow {
-        val categoryEmails = LocalMemosDataProvider.getMemoById(id)
+        val memo = LocalMemosDataProvider.getMemoById(id)
+        emit(memo)
     }
 }

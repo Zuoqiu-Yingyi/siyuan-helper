@@ -37,7 +37,7 @@ object LocalSubjectDataProvider {
     /**
      * Whether or not the given [Subject.id] id is an account owned by the current user.
      */
-    fun isSubject(uid: Long): Boolean = allSubjects.any { it.id == uid }
+    fun isSubject(id: Long): Boolean = allSubjects.any { it.id == id }
 
     /**
      * Get the contact of the current user with the given [id].

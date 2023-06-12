@@ -5,3 +5,4 @@
 - 添加应用图标 | Add application icon
 - 实现基本 UI 框架 | Implement basic UI framework
   - REF: https://github.com/android/compose-samples/tree/main/Reply
+- 实现备忘录编辑功能 | Implement memo editing function

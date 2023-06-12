@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">思源助手</string>
+
+    <string name="navigation_drawer">导航栏</string>
+
+    <string name="tab_inbox">收集箱</string>
+    <string name="tab_tag">标签</string>
+    <string name="tab_archive">历史</string>
+    <string name="tab_setting">设置</string>
+
 </resources>

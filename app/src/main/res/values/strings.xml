@@ -3,24 +3,31 @@
 
     <string name="navigation_drawer">Navigation Drawer</string>
 
+    <!-- navigation tab label -->
     <string name="tab_inbox">Inbox</string>
-    <string name="tab_article">Articles</string>
-    <string name="tab_dm">Direct Messages</string>
-    <string name="tab_groups">Groups</string>
+    <string name="tab_tag">Tags</string>
+    <string name="tab_archive">Archive</string>
+    <string name="tab_setting">Settings</string>
+
+    <string name="edit">Edit</string>
+    <string name="save">Save</string>
+
+    <string name="title">title</string>
+    <string name="description">description</string>
 
     <string name="profile">Profile</string>
     <string name="search">Search</string>
     <string name="reply">Reply</string>
     <string name="reply_all">Reply All</string>
 
-    <string name="edit">Edit</string>
-    <string name="compose">Compose</string>
+    <string name="add">Add</string>
+    <string name="add_memo">Add Memo</string>
 
     <string name="back_button">Back</string>
     <string name="more_options_button">More options</string>
     <string name="messages">Messages</string>
 
-    <string name="search_emails">Search emails</string>
+    <string name="search_memos">Search memos</string>
     <string name="no_item_found">No item found</string>
     <string name="no_search_history">No search history</string>
 </resources>

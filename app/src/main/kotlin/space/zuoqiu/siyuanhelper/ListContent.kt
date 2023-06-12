@@ -27,6 +27,7 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -114,18 +115,20 @@ fun InboxScreen(
             )
             // When we have bottom navigation we show FAB at the bottom end.
             if (navigationType == NavigationType.BOTTOM_NAVIGATION) {
+                /* 悬浮的添加按钮 */
                 LargeFloatingActionButton(
                     onClick = { /*TODO*/ },
                     modifier = Modifier
+                        .size(64.dp)
                         .align(Alignment.BottomEnd)
-                        .padding(16.dp),
+                        .padding(8.dp),
                     containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                     contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                 ) {
+                    /* 添加按钮 */
                     Icon(
-                        imageVector = Icons.Default.Edit,
-                        contentDescription = stringResource(id = R.string.edit),
-                        modifier = Modifier.size(28.dp)
+                        imageVector = Icons.Default.Add,
+                        contentDescription = stringResource(id = R.string.add),
                     )
                 }
             }
@@ -223,7 +226,6 @@ fun MemoList(
     LazyColumn(
         modifier = modifier
             .background(MaterialTheme.colorScheme.inverseOnSurface)
-            .padding(top = 16.dp)
     ) {
         item {
             SubjectDetailAppBar(

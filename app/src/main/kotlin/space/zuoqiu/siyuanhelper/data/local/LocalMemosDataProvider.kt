@@ -41,7 +41,7 @@ object LocalMemosDataProvider {
                 As always, thank you for shopping with us and we hope you love our specially formulated Cucumber Mask!
             """.trimIndent(),
             isStarred = true,
-            created = LocalDateTime.of(2023, 1, 2, 3, 4, 5).atZone(ZoneId.systemDefault()),
+            updated = LocalDateTime.of(2023, 1, 2, 3, 4, 5).atZone(ZoneId.systemDefault()),
         ),
         Memo(
             id = 1L,
@@ -56,7 +56,7 @@ object LocalMemosDataProvider {
 
                 Ali
             """.trimIndent(),
-            created = LocalDateTime.of(2023, 2, 2, 3, 4, 5).atZone(ZoneId.systemDefault()),
+            updated = LocalDateTime.of(2023, 2, 2, 3, 4, 5).atZone(ZoneId.systemDefault()),
         ),
         Memo(
             id = 2L,
@@ -70,7 +70,7 @@ object LocalMemosDataProvider {
                 MemoAttachment(R.drawable.paris_4, "Street with bike in Paris")
             ),
             isImportant = true,
-            created = LocalDateTime.of(2023, 3, 2, 3, 4, 5).atZone(ZoneId.systemDefault()),
+            updated = LocalDateTime.of(2023, 3, 2, 3, 4, 5).atZone(ZoneId.systemDefault()),
         ),
     )
 

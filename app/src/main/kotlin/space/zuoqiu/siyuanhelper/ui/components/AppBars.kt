@@ -106,7 +106,7 @@ fun DockedSearchBar(
         onActiveChange = {
             active = it
         },
-        placeholder = { Text(text = stringResource(id = R.string.search_emails)) },
+        placeholder = { Text(text = stringResource(id = R.string.search_memos)) },
         leadingIcon = {
             if (active) {
                 Icon(

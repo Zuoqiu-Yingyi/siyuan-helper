@@ -23,15 +23,15 @@ import java.time.ZonedDateTime
  */
 data class Memo(
     val id: Long, // 备忘录 ID
-    val subject: Subject = LocalSubjectDataProvider.getDefaultSubject(), // 所属主题
-    val title: String = "", // 标题
-    val description: String = "", // 描述
-    val content: String = "", // 内容
-    val attachments: List<MemoAttachment> = emptyList(), // 附件
+    var subject: Subject = LocalSubjectDataProvider.getDefaultSubject(), // 所属主题
+    var title: String = "", // 标题
+    var description: String = "", // 描述
+    var content: String = "", // 内容
+    var attachments: List<MemoAttachment> = emptyList(), // 附件
     var isImportant: Boolean = false, // 是否重要
     var isStarred: Boolean = false, // 是否星标
     var memoType: MemoType = MemoType.INBOX, // 备忘录类型
-    val created: ZonedDateTime = ZonedDateTime.now(), // 创建时间
-    val referenced: List<Memo> = emptyList(), // 被引用列表
-    val tags: List<Tag> = emptyList(), // 标签列表
+    var updated: ZonedDateTime = ZonedDateTime.now(), // 更新时间
+    var referenced: List<Memo> = emptyList(), // 被引用列表
+    var tags: List<Tag> = emptyList(), // 标签列表
 )

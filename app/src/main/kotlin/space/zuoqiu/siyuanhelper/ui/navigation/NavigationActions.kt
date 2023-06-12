@@ -16,20 +16,24 @@
 package space.zuoqiu.siyuanhelper.ui.navigation
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Article
 import androidx.compose.material.icons.filled.Inbox
-import androidx.compose.material.icons.filled.People
-import androidx.compose.material.icons.outlined.ChatBubbleOutline
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.Tag
+import androidx.compose.material.icons.outlined.Archive
+import androidx.compose.material.icons.outlined.History
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import space.zuoqiu.siyuanhelper.R
 
+/**
+ * 导航路由
+ */
 object Route {
-    const val INBOX = "Inbox"
-    const val ARTICLES = "Articles"
-    const val DM = "DirectMessages"
-    const val GROUPS = "Groups"
+    const val INBOX = "INBOX"
+    const val TAG = "TAG"
+    const val ARCHIVE = "ARCHIVE"
+    const val SETTING = "SETTING"
 }
 
 data class TopLevelDestination(
@@ -58,6 +62,7 @@ class NavigationActions(private val navController: NavHostController) {
     }
 }
 
+/* 顶层的导航栏描述 */
 val TOP_LEVEL_DESTINATIONS = listOf(
     TopLevelDestination(
         route = Route.INBOX,
@@ -66,21 +71,21 @@ val TOP_LEVEL_DESTINATIONS = listOf(
         iconTextId = R.string.tab_inbox
     ),
     TopLevelDestination(
-        route = Route.ARTICLES,
-        selectedIcon = Icons.Default.Article,
-        unselectedIcon = Icons.Default.Article,
-        iconTextId = R.string.tab_article
+        route = Route.TAG,
+        selectedIcon = Icons.Default.Tag,
+        unselectedIcon = Icons.Default.Tag,
+        iconTextId = R.string.tab_tag
     ),
     TopLevelDestination(
-        route = Route.DM,
-        selectedIcon = Icons.Outlined.ChatBubbleOutline,
-        unselectedIcon = Icons.Outlined.ChatBubbleOutline,
-        iconTextId = R.string.tab_dm
+        route = Route.ARCHIVE,
+        selectedIcon = Icons.Outlined.Archive,
+        unselectedIcon = Icons.Outlined.Archive,
+        iconTextId = R.string.tab_archive
     ),
     TopLevelDestination(
-        route = Route.GROUPS,
-        selectedIcon = Icons.Default.People,
-        unselectedIcon = Icons.Default.People,
-        iconTextId = R.string.tab_groups
+        route = Route.SETTING,
+        selectedIcon = Icons.Default.Settings,
+        unselectedIcon = Icons.Default.Settings,
+        iconTextId = R.string.tab_setting
     ),
 )

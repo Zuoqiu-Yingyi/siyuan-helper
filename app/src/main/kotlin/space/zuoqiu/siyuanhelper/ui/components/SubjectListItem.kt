@@ -73,7 +73,7 @@ fun SubjectListItem(
                 /* 点击查看对应的备忘录列表 */
                 onClick = { navigateToDetail(subject.id) },
                 /* 长按选择 */
-                onLongClick = { toggleSelection(subject.id) }
+                onLongClick = { toggleSelection(subject.id) },
             )
             .clip(CardDefaults.shape),
         colors = CardDefaults.cardColors(
@@ -106,13 +106,12 @@ fun SubjectListItem(
 
                 Column(
                     modifier = Modifier
-                        .weight(1f)
-                        .padding(horizontal = 12.dp, vertical = 4.dp),
+                        .weight(1f),
                     verticalArrangement = Arrangement.Center
                 ) {
                     Text(
                         text = subject.title,
-                        style = MaterialTheme.typography.labelMedium
+                        style = MaterialTheme.typography.titleMedium
                     )
                     Text(
                         text = subject.updated.format(dateTimeFormatter),
@@ -136,10 +135,9 @@ fun SubjectListItem(
 
             Text(
                 text = subject.description,
-                style = MaterialTheme.typography.bodyLarge,
+                style = MaterialTheme.typography.bodyMedium,
                 color = if (isSelected) MaterialTheme.colorScheme.onPrimaryContainer
                 else MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.padding(top = 4.dp, bottom = 4.dp),
             )
 
             // Text(

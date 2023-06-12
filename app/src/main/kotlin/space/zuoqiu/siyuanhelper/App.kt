@@ -325,13 +325,13 @@ private fun HelperNavHost(
                 toggleSelectedSubject = toggleSelectedEmail
             )
         }
-        composable(Route.DM) {
+        composable(Route.ARCHIVE) {
             EmptyComingSoon()
         }
-        composable(Route.ARTICLES) {
+        composable(Route.TAG) {
             EmptyComingSoon()
         }
-        composable(Route.GROUPS) {
+        composable(Route.SETTING) {
             EmptyComingSoon()
         }
     }

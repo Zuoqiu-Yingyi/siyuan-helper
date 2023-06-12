@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.Packaging
+
 // Copyright (C) 2023 Zuoqiu Yingyi
 // 
 // This program is free software: you can redistribute it and/or modify
@@ -75,7 +77,7 @@ android {
         kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 
-    packagingOptions {
+    fun Packaging.() {
         resources {
             excludes += "META-INF/AGPL-3.0.txt"
         }
@@ -98,7 +100,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
 
     implementation(libs.androidx.compose.material3)
-    implementation("com.google.accompanist:accompanist-adaptive:0.26.2-beta")
+    implementation("com.google.accompanist:accompanist-adaptive:0.31.3-beta")
 
     implementation(libs.androidx.compose.materialWindow)
     implementation(libs.androidx.compose.material.iconsExtended)

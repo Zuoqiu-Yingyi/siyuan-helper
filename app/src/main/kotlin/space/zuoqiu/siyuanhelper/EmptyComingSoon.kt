@@ -40,7 +40,6 @@ fun EmptyComingSoon(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Editor()
     }
 }
 

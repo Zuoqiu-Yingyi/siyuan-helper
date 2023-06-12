@@ -30,6 +30,7 @@ import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MenuOpen
@@ -83,6 +84,7 @@ fun NavigationRail(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
+                    /* 导航栏菜单按钮 */
                     NavigationRailItem(
                         selected = false,
                         onClick = onDrawerClicked,
@@ -93,16 +95,18 @@ fun NavigationRail(
                             )
                         }
                     )
+
+                    /* 悬浮的添加按钮 */
                     FloatingActionButton(
                         onClick = { /*TODO*/ },
                         modifier = Modifier.padding(top = 8.dp, bottom = 32.dp),
                         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer
+                        contentColor = MaterialTheme.colorScheme.onTertiaryContainer,
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Edit,
-                            contentDescription = stringResource(id = R.string.edit),
-                            modifier = Modifier.size(18.dp)
+                            imageVector = Icons.Default.Add,
+                            contentDescription = stringResource(id = R.string.add),
+                            modifier = Modifier.size(16.dp),
                         )
                     }
                     Spacer(Modifier.height(8.dp)) // NavigationRailHeaderPadding
@@ -175,13 +179,16 @@ fun PermanentNavigationDrawerContent(
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
+                    /* 应用名称 */
                     Text(
                         modifier = Modifier
                             .padding(16.dp),
                         text = stringResource(id = R.string.app_name).uppercase(),
                         style = MaterialTheme.typography.titleMedium,
-                        color = MaterialTheme.colorScheme.primary
+                        color = MaterialTheme.colorScheme.primary,
                     )
+
+                    /*  */
                     ExtendedFloatingActionButton(
                         onClick = { /*TODO*/ },
                         modifier = Modifier
@@ -191,14 +198,14 @@ fun PermanentNavigationDrawerContent(
                         contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Edit,
-                            contentDescription = stringResource(id = R.string.edit),
-                            modifier = Modifier.size(18.dp)
+                            imageVector = Icons.Default.Add,
+                            contentDescription = stringResource(id = R.string.add),
+                            modifier = Modifier.size(18.dp),
                         )
                         Text(
-                            text = stringResource(id = R.string.compose),
+                            text = stringResource(id = R.string.add_memo),
                             modifier = Modifier.weight(1f),
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
                         )
                     }
                 }
@@ -239,6 +246,9 @@ fun PermanentNavigationDrawerContent(
     }
 }
 
+/**
+ * 侧边抽屉内容
+ */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ModalNavigationDrawerContent(
@@ -266,11 +276,14 @@ fun ModalNavigationDrawerContent(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
+                        /* 应用名称 */
                         Text(
                             text = stringResource(id = R.string.app_name).uppercase(),
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.primary
                         )
+
+                        /* 收起抽屉按钮 */
                         IconButton(onClick = onDrawerClicked) {
                             Icon(
                                 imageVector = Icons.Default.MenuOpen,
@@ -283,19 +296,20 @@ fun ModalNavigationDrawerContent(
                         onClick = { /*TODO*/ },
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(top = 8.dp, bottom = 40.dp),
+                            .padding(top = 8.dp, bottom = 16.dp),
                         containerColor = MaterialTheme.colorScheme.tertiaryContainer,
                         contentColor = MaterialTheme.colorScheme.onTertiaryContainer
                     ) {
+                        /* 添加按钮 */
                         Icon(
-                            imageVector = Icons.Default.Edit,
-                            contentDescription = stringResource(id = R.string.edit),
-                            modifier = Modifier.size(18.dp)
+                            imageVector = Icons.Default.Add,
+                            contentDescription = stringResource(id = R.string.add),
+                            modifier = Modifier.size(18.dp),
                         )
                         Text(
-                            text = stringResource(id = R.string.compose),
+                            text = stringResource(id = R.string.add_memo),
                             modifier = Modifier.weight(1f),
-                            textAlign = TextAlign.Center
+                            textAlign = TextAlign.Center,
                         )
                     }
                 }

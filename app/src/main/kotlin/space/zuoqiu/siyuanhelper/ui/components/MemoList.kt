@@ -57,11 +57,15 @@ fun MemoList(
             }
         }
         items(items = memos, key = { it.id }) { memo ->
-            MemoItem(memo = memo)
+            MemoItem(
+                memo = memo,
+                toggleStar = {
+                    memo.isStarred = !memo.isStarred
+                },
+            )
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

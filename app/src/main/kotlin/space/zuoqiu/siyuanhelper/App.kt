@@ -91,11 +91,15 @@ fun App(
         else -> DevicePosture.NormalPosture
     }
 
+    /* 根据窗口宽度设置界面布局类型 */
     when (windowSize.widthSizeClass) {
+        /* 小型设备 */
         WindowWidthSizeClass.Compact -> {
             navigationType = NavigationType.BOTTOM_NAVIGATION
             contentType = HelperContentType.SINGLE_PANE
         }
+
+        /* 中等设备 */
         WindowWidthSizeClass.Medium -> {
             navigationType = NavigationType.NAVIGATION_RAIL
             contentType = if (foldingDevicePosture != DevicePosture.NormalPosture) {
@@ -104,6 +108,8 @@ fun App(
                 HelperContentType.SINGLE_PANE
             }
         }
+
+        /* 大型设备 */
         WindowWidthSizeClass.Expanded -> {
             navigationType = if (foldingDevicePosture is DevicePosture.BookPosture) {
                 NavigationType.NAVIGATION_RAIL
@@ -112,6 +118,8 @@ fun App(
             }
             contentType = HelperContentType.DUAL_PANE
         }
+
+        /* 其他设备 */
         else -> {
             navigationType = NavigationType.BOTTOM_NAVIGATION
             contentType = HelperContentType.SINGLE_PANE
@@ -121,8 +129,8 @@ fun App(
     /**
      * 导航栏的内容可以放在
      * - 页面底部
-     * - 页面顶部
-     * - 页面中间
+     * - 侧边栏顶部
+     * - 侧边栏中间
      */
     val navigationContentPosition = when (windowSize.heightSizeClass) {
         WindowHeightSizeClass.Compact -> {

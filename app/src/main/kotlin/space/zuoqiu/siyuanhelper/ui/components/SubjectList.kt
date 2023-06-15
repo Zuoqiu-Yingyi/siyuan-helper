@@ -65,9 +65,12 @@ fun SubjectList(
                     navigateToDetail = { subjectId ->
                         navigateToDetail(subjectId, HelperContentType.SINGLE_PANE)
                     },
+                    toggleDefault = { subjectId ->
+                        subject.isDefault = !subject.isDefault
+                    },
                     toggleSelection = toggleSubjectSelection,
                     isOpened = openedSubject?.id == subject.id,
-                    isSelected = selectedSubjectIds.contains(subject.id)
+                    isSelected = selectedSubjectIds.contains(subject.id),
                 )
             }
         }

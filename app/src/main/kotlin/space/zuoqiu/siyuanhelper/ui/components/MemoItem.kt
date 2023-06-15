@@ -30,9 +30,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Save
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.StarBorder
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -41,7 +40,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -71,6 +69,7 @@ import java.time.ZonedDateTime
 fun MemoItem(
     memo: Memo,
     modifier: Modifier = Modifier,
+    toggleStar: (Long) -> Unit,
 ) {
     /* markdown 文本 */
     val markdown = rememberSaveable(stateSaver = TextFieldValue.Saver) {
@@ -195,18 +194,36 @@ fun MemoItem(
                     }
                 }
 
+                var star by rememberSaveable { mutableStateOf(memo.isStarred) } // 是否为默认主题
                 /* 收藏按钮 */
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        star = !star
+                        toggleStar(memo.id)
+                    },
                     modifier = Modifier
                         .clip(CircleShape)
                         .background(MaterialTheme.colorScheme.surface),
                 ) {
-                    Icon(
-                        imageVector = Icons.Default.StarBorder,
-                        contentDescription = "Favorite",
-                        tint = MaterialTheme.colorScheme.outline
-                    )
+                    Crossfade(targetState = star) {
+                        when (it) {
+                            true -> {
+                                Icon(
+                                    imageVector = Icons.Default.Star,
+                                    contentDescription = stringResource(id = R.string.star),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
+
+                            false -> {
+                                Icon(
+                                    imageVector = Icons.Default.StarBorder,
+                                    contentDescription = stringResource(id = R.string.star),
+                                    tint = MaterialTheme.colorScheme.onSurface,
+                                )
+                            }
+                        }
+                    }
                 }
             }
 
@@ -284,27 +301,6 @@ fun MemoItem(
                     }
                 }
             }
-
-            /* 下方按钮 */
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 16.dp),
-                horizontalArrangement = Arrangement.spacedBy(4.dp),
-            ) {
-                Button(
-                    onClick = { /*TODO*/ },
-                    modifier = Modifier.weight(1f),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = MaterialTheme.colorScheme.inverseOnSurface
-                    )
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.reply_all),
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-            }
         }
     }
 }
@@ -315,6 +311,7 @@ fun MemoItemPreview() {
     HelperTheme {
         MemoItem(
             memo = LocalMemosDataProvider.allMemos.first(),
+            toggleStar = {},
         )
     }
 }

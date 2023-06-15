@@ -47,6 +47,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.selected
@@ -68,6 +69,7 @@ fun SubjectItem(
     subject: Subject,
     navigateToDetail: (Long) -> Unit,
     toggleSelection: (Long) -> Unit,
+    toggleDefault: (Long) -> Unit,
     modifier: Modifier = Modifier,
     isOpened: Boolean = false,
     isSelected: Boolean = false,
@@ -180,9 +182,13 @@ fun SubjectItem(
                     )
                 }
 
-                /* 置顶按钮 */
+                var defaultSubject by rememberSaveable { mutableStateOf(subject.isDefault) } // 是否为默认主题
+                /* 置顶按钮(设置为默认主题) */
                 IconButton(
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        defaultSubject = !defaultSubject
+                        toggleDefault(subject.id)
+                    },
                     modifier = Modifier
                         .clip(CircleShape)
                         .background(MaterialTheme.colorScheme.surface)
@@ -190,7 +196,8 @@ fun SubjectItem(
                     Icon(
                         imageVector = Icons.Default.PushPin,
                         contentDescription = stringResource(id = R.string.top),
-                        tint = MaterialTheme.colorScheme.outline,
+                        modifier = if (defaultSubject) Modifier.alpha(1f) else Modifier.alpha(0.5f),
+                        tint = MaterialTheme.colorScheme.onSurface,
                     )
                 }
             }
@@ -257,6 +264,7 @@ fun SubjectItemPreview() {
             subject = LocalSubjectDataProvider.getDefaultSubject(),
             navigateToDetail = {},
             toggleSelection = {},
+            toggleDefault = {},
         )
     }
 }

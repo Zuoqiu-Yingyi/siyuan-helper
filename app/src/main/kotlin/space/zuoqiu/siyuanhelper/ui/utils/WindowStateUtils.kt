@@ -53,19 +53,23 @@ fun isSeparating(foldFeature: FoldingFeature?): Boolean {
  * 根据设备屏幕大小与状态使用不同样式的导航栏
  */
 enum class NavigationType {
-    BOTTOM_NAVIGATION, NAVIGATION_RAIL, PERMANENT_NAVIGATION_DRAWER
+    BOTTOM_NAVIGATION, // 导航栏在底部
+    NAVIGATION_RAIL, // 导航栏在侧边一列
+    PERMANENT_NAVIGATION_DRAWER, // 导航栏在侧边面板
 }
 
 /**
  * 导航栏、导航抽屉中导航项的位置取决于设备大小和状态
  */
 enum class HelperNavigationContentPosition {
-    TOP, CENTER
+    TOP, // 页签按钮位于上部
+    CENTER, // 页签按钮位于中部
 }
 
 /**
- * 应用内容显示取决于设备大小和状态
+ * 应用内容面板显示取决于设备大小和状态
  */
 enum class HelperContentType {
-    SINGLE_PANE, DUAL_PANE
+    SINGLE_PANE, // 仅显示一个面板
+    DUAL_PANE, // 显示两个面板
 }

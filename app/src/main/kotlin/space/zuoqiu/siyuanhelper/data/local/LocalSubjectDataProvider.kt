@@ -30,6 +30,7 @@ object LocalSubjectDataProvider {
             id = 0L,
             title = "default subject title",
             description = "default subject description",
+            isDefault = true,
             updated = LocalDateTime.of(2023, 3, 2, 3, 4, 5).atZone(ZoneId.systemDefault()),
         ),
     )
@@ -49,6 +50,6 @@ object LocalSubjectDataProvider {
      * Get the default subject
      */
     fun getDefaultSubject(): Subject {
-        return allSubjects.first()
+        return allSubjects.firstOrNull { it.isDefault } ?: allSubjects.first()
     }
 }
